@@ -4,9 +4,6 @@
   "private": "true",
   "dependencies": {
     "express": "4.0.0-rc4",
-    "jade": "*",
-    "stylus": "*",
-    "nib": "*",
     "morgan": "*",
     "sqlite3": "*"
   }
