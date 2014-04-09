@@ -33,6 +33,18 @@ header {
   border-bottom: 1px solid #df1806;
   text-shadow: 0px -1px 0px #df1806;
 }
+
+table.structure_table {
+    border-collapse:collapse;
+    width: 100%
+}
+
+table.structure_table th, td {
+    border: 1px solid black; 
+    max-width: 150px;
+    overflow: hidden;
+}
+
 .container {
   width: 500px;
   margin: 50px auto;

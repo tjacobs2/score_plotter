@@ -10,6 +10,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="/bower_components/nvd3/nv.d3.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
 
     <!-- SCRIPTS -->
     <script src="/bower_components/angular/angular.js"></script>
@@ -21,14 +22,50 @@
 </head>
 
 <body ng-controller="mainController">
-    <div class="container">
-        <nvd3-line-chart
-            data="exampleData"
+    <div>
+        <table class=structure_table>
+          <tr>
+            <th ng-repeat="(key, value) in structures[1]">
+              {{ key }}
+            </th>
+          </tr>
+          <tr ng-repeat="structure in structures">
+            <td ng-repeat="(key, value) in structure">
+              {{ value }}
+            </td>
+          </tr>
+        </table>
+        <nvd3-discrete-bar-chart
+            data="testData"
+            id="exampleId"
             showXAxis="true"
             showYAxis="true"
-            tooltips="true"
-            interactive="true">
-        </nvd3-line-chart>
+            width="1000"
+            staggerLabels="true"
+            height="400">
+                <svg></svg>
+        </nvd3-discrete-bar-chart>
+    <!-- <nvd3-pie-chart
+        data="exampleData"
+        id="exampleId"
+        width="550"
+        height="350"
+        x="xFunction()"
+        y="yFunction()"
+        showLabels="true">
+        <svg></svg>
+    </nvd3-pie-chart> -->
+    <!-- <nvd3-line-chart
+        data="exampleData"
+        id="showXAxisExample"
+        width="550"
+        height="300"
+        xAxisTickFormat="xAxisTickFormatFunction()"
+        yAxisTickFormat="yAxisTickFormatFunction()"
+        showXAxis="false"
+        showYAxis="true">
+            <svg></svg>
+    </nvd3-line-chart>-->
     </div>
 </body>
 </html>
