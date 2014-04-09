@@ -9,6 +9,7 @@ var db = new sqlite.Database('smotifs_short.db3');
 //        FOREIGN KEY (struct_id) REFERENCES structures(struct_id) DEFERRABLE INITIALLY DEFERRED);
 
 exports.all_structures = function(callback) {
+  //db.all('Select * from structures s join pose_conformations c on s.struct_id = c.struct_id;', function(err, all) {
   db.all('Select * from structures s join pose_conformations c on s.struct_id = c.struct_id;', function(err, all) {
     if(err)
       console.error(err);
