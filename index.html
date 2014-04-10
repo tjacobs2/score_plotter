@@ -1,0 +1,37 @@
+<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="score_plotter">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <title>Rosetta Score Plotter</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/radian.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <!-- SCRIPTS -->
+    <script src="js/lib/jquery.js"></script>
+    <script src="js/lib/jquery.csv.js"></script>
+    <script src="js/lib/hljs.js"></script>
+    <script src="js/lib/bootstrap.js"></script>
+    <script src="js/lib/escodegen.browser.js"></script>
+    <script src="js/lib/d3.v2.js"></script>
+    <script src="js/lib/angular/angular.js"></script>
+    <script src="js/lib/radian.js"></script>
+
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-controller="mainController">
+    <div file-dropzone id=drop_zone file="score_file" file-name="foo">
+        Drop file here
+    </div>
+    <div>
+        <span>{{foo}}</span>
+    </div>
+</body>
+</html>
+
