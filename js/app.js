@@ -2,13 +2,23 @@ angular.module('score_plotter', ['radian'])
 
 .controller('mainController', function($scope, $http) {
 
+  $scope.scores = {};
+
+  $scope.$watch('score_file_text', function(newValue, oldValue) {
+    if(newValue) {
+      $scope.scores = text_to_json($scope.score_file_text);
+      console.log($scope.scores);
+    }
+  });
+
 })
 
-.directive('fileDropzone', function() {
+.directive('textFileDropzone', function() {
   return {
     restrict: 'A',
     scope: {
-        fileName: '='
+        fileName: '=',
+        fileText: '='
     },
     link: function(scope, element, attrs) {
 
@@ -32,24 +42,15 @@ angular.module('score_plotter', ['radian'])
         file = event.originalEvent.dataTransfer.files[0];
         name = file.name;
         console.log(name);
-        //type = file.type;
-        //size = file.size;
-        //reader = new FileReader();
-        //reader.readAsDataURL(file);
-        return scope.$apply(function() {
-            scope.fileName = name;
-        });
-        //reader.onload = function(evt) {
-        //  if (checkSize(size) && isTypeValid(type)) {
-        //    return scope.$apply(function() {
-        //      scope.file = evt.target.result;
-        //      if (angular.isString(scope.fileName)) {
-        //        return scope.fileName = name;
-        //      }
-        //    });
-        //  }
-        //};
-        //return false;
+        reader = new FileReader();
+        reader.readAsText(file);
+        reader.onload = function() {
+          var text = reader.result;
+          return scope.$apply(function() {
+              scope.fileName = name;
+              scope.fileText = text;
+          });
+        }
       });
     }
   };
